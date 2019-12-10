@@ -7,5 +7,40 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/listView1"
+        android:layout_below="@id/butTon1"
         />
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/butTon1"
+        android:layout_below="@id/editText1"
+        android:layout_centerHorizontal="true"
+        android:text="THÊM"
+        android:textSize="20dp"
+        />
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/butTon2"
+        android:layout_below="@id/editText1"
+        android:layout_alignParentRight="true"
+        android:text="CẬP NHẬT"
+        android:textSize="20dp"
+        />
+    <Button
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/butTon3"
+        android:layout_below="@id/editText1"
+        android:layout_alignParentLeft="true"
+        android:text="Xóa"
+        android:textSize="20dp"
+        />
+    <EditText
+        android:layout_width="wrap_content"
+        android:hint="Nhập 1 cái gì đó"
+        android:textSize="20dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/editText1"
+        android:layout_height="wrap_content"/>
 </RelativeLayout>

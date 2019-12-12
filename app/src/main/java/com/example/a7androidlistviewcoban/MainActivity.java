@@ -1,7 +1,9 @@
 package com.example.a7androidlistviewcoban;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity
     EditText editText1;
     Button butTon1, butTon2, butTon3;
     ArrayList<String> arrayList;
+    ArrayAdapter adapter;
     int viTri = -1;
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -39,7 +42,7 @@ public class MainActivity extends AppCompatActivity
         arrayList.add("IOS");
         arrayList.add("Android");
         arrayList.add("IOS");
-        final ArrayAdapter adapter = new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, arrayList);
+        adapter = new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, arrayList);
         listView1.setAdapter(adapter);
 //        listView1.setOnItemClickListener(new AdapterView.OnItemClickListener()
 //        {
@@ -54,7 +57,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id)
             {
-                Toast.makeText(MainActivity.this, "Long Click" + position, Toast.LENGTH_SHORT).show();
+
                 return false;
             }
         });
@@ -76,6 +79,7 @@ public class MainActivity extends AppCompatActivity
             {
                 editText1.setText(arrayList.get(position));
                 viTri = position;
+                xacNhanXoa(position);
             }
         });
         butTon2.setOnClickListener(new View.OnClickListener()
@@ -87,5 +91,30 @@ public class MainActivity extends AppCompatActivity
                 adapter.notifyDataSetChanged();
             }
         });
+    }
+    private void xacNhanXoa(final int position)
+    {
+        AlertDialog.Builder alertDiaLog = new AlertDialog.Builder(MainActivity.this);
+        alertDiaLog.setTitle("Thông Báo!");
+        alertDiaLog.setIcon(R.mipmap.ic_launcher);
+        alertDiaLog.setMessage("Bạn Chắc Chắn Muốn Xóa");
+        alertDiaLog.setPositiveButton("Có", new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+                arrayList.remove(position);
+                adapter.notifyDataSetChanged();
+            }
+        });
+        alertDiaLog.setNegativeButton("Không", new DialogInterface.OnClickListener()
+        {
+            @Override
+            public void onClick(DialogInterface dialog, int which)
+            {
+
+            }
+        });
+        alertDiaLog.show();
     }
 }
